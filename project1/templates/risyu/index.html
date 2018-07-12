@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang='ja'>
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118028326-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'UA-118028326-1');
+    </script>
+    <meta charset='utf-8'>
+    <title>レビューページ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <style>
+      header {
+        margin-bottom: 5em;
+      }
+      .container-fluid {
+        padding: 0;
+      }
+      .col-3 {
+        padding: 0;
+      }
+      .col-9 {
+        padding: 0;
+      }
+
+      .col-lg-3 {
+        padding: 0;
+      }
+      .col-lg-9 {
+        padding: 0;
+      }
+      .row {
+        margin: 0;
+      }
+    </style>
+    <style>
+    	/* フォントの設定 */
+    	body	{
+    		font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
+    	}
+      .slider {
+        height: 10em;
+        /* width: 16%; */
+        /* position: fixed; */
+        /* top: 4em;
+        bottom: 0;
+        left: 0.3em;
+        display: block; */
+        overflow-x: hidden;
+        overflow-y: auto
+      }
+  	</style>
+    <!-- Google icon -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- muuri CDN-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/muuri/0.5.4/muuri.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/muuri/0.5.4/muuri.min.js"></script>
+    <!-- CDN for animation -->
+    <script src="https://haltu.github.io/muuri/scripts/vendor/web-animations-2.3.1.min.js"></script>
+    <script src="https://haltu.github.io/muuri/scripts/vendor/hammer-2.0.8.min.js"></script>
+    <!-- setting -->
+    <script src="https://haltu.github.io/muuri/scripts/demo-kanban.js?v=5"></script>
+    <script src='https://haltu.github.io/muuri/scripts/vendor/muuri-0.5.4.js'></script>
+    <link rel="stylesheet" href="https://haltu.github.io/muuri/styles/demo-kanban.css?v=5">
+
+    <style>
+    .board-column {
+      width: 230px;
+      margin: 0px;
+    }
+    </style>
+  </head>
+
+    <body>
+          <div class="container-fluid bg-light" style='width: 100%;'>
+            <nav class="navbar justify-content-between bg-dark">
+              <a class="navbar-brand text-white font-weight-bold">時間割　選ぶサービス</a>
+            </nav>
+              <!--コメントする-->
+              <div class="input-group col-lg-12" style='padding: 15px;'>
+                <input type="text" class="form-control" placeholder="教科を絞り込む" aria-label="Recipient's username" aria-describedby="basic-addon2" id='comm_val'>
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="button" id='search'>検索</button>
+                </div>
+              </div>
+
+              <div class='col-12'>
+                <section class="kanban-demo">
+                  <div class="board">
+                    <div class="board-column working slider" style='height: 70em;'>
+                      <div class="board-column-header">受講しない</div>
+                      <div class="board-column-content no_take">
+                        {% for i in class_list %}
+                          {% for j in i %}
+                            {% ifequal forloop.counter 1 %}
+                              <div class="board-item" data-time='{{ j }}'
+                            {% endifequal %}
+                            {% ifequal forloop.counter 2 %}
+                              id='{{ j }}'><div class="board-item-content"><span>
+                            {% endifequal %}
+                            {% ifequal forloop.counter 3 %}
+                              {{ j }}</span></div></div>
+                            {% endifequal %}
+                            
+                          {% endfor %}
+                          
+                        {% endfor %}
+
+
+                      </div>
+                    </div>
+                    
+                    {% for i in jikanwari %}
+                    <div class="board-column done slider">
+                      <div class="board-column-header">{{ i }}</div>
+                      <div class="board-column-content" data-time='{{ i }}'>
+                      </div>
+                    </div>
+                    {% endfor %}
+                    
+                  </div>
+                </section>
+              </div>
+          </div>
+        </div>
+
+    <!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+      <!-- 正誤判定 -->
+      <script>
+        $(function() {
+          // マウスアップ時に発火
+          $(".board-item").mouseup(function() {
+            // 判定を遅らせる
+            setTimeout(function(){
+              // それぞれの枠に対して調べる
+              $(".board-column-content").each(function() {
+                  // 時間割に合っていないときまたは、複数入っているとき赤字にする
+                  if ($(this).data('time') == $(this).children('.board-item').data('time')) {
+                    if ($(this).children('.board-item').length > 1) {
+                      $(this).children('.board-item').css('color', 'red');
+                    } else {
+                      $(this).children('.board-item').css('color', 'black');
+                    }
+                  } else {
+                    $(this).children('.board-item').css('color', 'red');
+                  }
+              });
+
+            }, 500);
+          });
+          
+          $('no_take').each(function() {
+            $(this).children('.board-item').css('color', 'black');
+          });
+        });
+        
+      </script>
+      <!--検索-->
+      <script>
+        $(function() {
+          $("#search").on('click', function() {
+            $("#70327").hide();
+            var grid = new Muuri('.board-column-content');
+            grid.sort();
+            
+          });
+        });
+      </script>
+  </body>
+</html>

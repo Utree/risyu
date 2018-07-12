@@ -1,0 +1,39 @@
+<!--
+"base.html" is including JQuery and Bootstrap
+-->
+
+
+{% extends "base.html" %}
+
+<!-- 調整用CSS -->
+{% block css %}
+ <!-- Animate.css -->
+ <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css'>
+ <style type='text/css'>
+   h1 {
+     /* display: none; */
+   }
+   .wobble {
+     /* 2秒かけて　アニメーションする */
+     animation-duration: 2s;
+
+   }
+ </style>
+{% endblock %}
+
+<!-- BODY -->
+{% block body %}
+ <h1 class='text-center animated wobble'>読み込み中</h1>
+ {{ param1 }}
+{% endblock %}
+
+<!-- 調整用SCRIPT -->
+{% block script %}
+ <script>
+   $(function() {
+     $('h1').fadeOut(3000, function() {
+       $('body').html('<h2>ようこそ</h2>');
+     });
+   });
+ </script>
+{% endblock %}
